@@ -1,0 +1,33 @@
+{
+  "name": "royal-pleco",
+  "version": "1.0.0",
+  "description": "server for Plecostomus automation",
+  "main": "index.js",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "cross-env NODE_ENV=testing jest --watch --verbose"
+  },
+  "author": "GrandPad Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grandpad/royal-pleco/issues"
+  },
+  "homepage": "https://github.com/grandpad/royal-pleco",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "supertest": "^6.0.1"
+  }
+}
