@@ -9,13 +9,11 @@ router.get("/:num", (req, res) => {
   //TODO: check req headers
 
   const issueNum = req.params.num.toString().trim();
-  // console.log("issue: ", issueNum);
 
   jira
     .getIssue(issueNum)
     .then((issue) => {
       const response = issue.data;
-      // console.log('res: ', response)
 
       if (response) {
         const tester = response.fields.assignee;

@@ -49,22 +49,14 @@ const jira_issues = [
 // get issue
 async function getIssue(issueNum) {
   // call jira api and get current issue(card)
-  // let url = `${process.env.JIRA_URL}/rest/api/2/issue/${issueNum}`;
   let url = `https://bugs.grandpad.co/rest/api/2/issue/${issueNum}`;
-
-  // console.log("url :", url);
-
-  // auth header:
-  // headers: {
-  // Authorization: 'Basic c2NvdHQuZnVzdG9uQGdyYW5kcGFkLm5ldDpOelUyTnpZM05UYzRNREV6T2hyM1djY0pRdnVHeXFTYjJ2K0d6K05TdnJldg=='
-  // }
   try {
     const res = await axios({
       method: "get",
       url: url,
       auth: {
-        username: "scott.fuston",
-        password: "Release123!",
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
       },
     });
 
