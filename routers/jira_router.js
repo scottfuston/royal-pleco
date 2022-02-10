@@ -16,16 +16,34 @@ router.get("/:num", (req, res) => {
       const response = issue.data;
 
       if (response) {
-        const tester = response.fields.assignee;
+        const tester =
+          response.fields.assignee !== null
+            ? response.fields.assignee.displayName
+            : "";
 
         const issueLinks = response.fields.issuelinks.filter((iss) => {
           return iss.type.name !== "Bugs Found";
         });
 
-        let results= {
+        let strArray = ["|||Issue|Tester"];
+
+        issueLinks.forEach((ele) => {
+          let type = ele.inwardIssue
+            ? "inwardIssue"
+            : ele.outwardIssue
+            ? "outwardIssue"
+            : "";
+          const key = ele[type].key;
+          const description = ele[type].fields.summary;
+
+          strArray.push(`||${key}: ${description}|${tester}`);
+        });
+
+        let results = {
           tester: tester,
-          linkedIssues: issueLinks
-        }
+          data: strArray
+        };
+        // console.log("restults: ", results);
 
         return res.status(200).json(results);
       }
