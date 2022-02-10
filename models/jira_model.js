@@ -1,7 +1,8 @@
 // *** jira_model ***
+const axios = require("axios");
 
 module.exports = {
-  getByCardNum,
+  getIssue,
 };
 
 // test data
@@ -46,33 +47,29 @@ const jira_issues = [
 ];
 
 // get issue
-function getByCardNum(issueNum) {
+async function getIssue(issueNum) {
   // call jira api and get current issue(card)
-  // https://<site-url>/rest/api/3/<resource-name>
-  // For example, https://your-domain.atlassian.net/rest/api/3/issue/DEMO-1
-  let url= 'https://bugs.grandpad.co/rest/api/3/issue'
+  // let url = `${process.env.JIRA_URL}/rest/api/2/issue/${issueNum}`;
+  let url = `https://bugs.grandpad.co/rest/api/2/issue/${issueNum}`;
 
-  // NzU2NzY3NTc4MDEzOhr3WccJQvuGyqSb2v+Gz+NSvrev
+  // console.log("url :", url);
 
-  // encoded: c2NvdHQuZnVzdG9uQGdyYW5kcGFkLm5ldDpOelUyTnpZM05UYzRNREV6T2hyM1djY0pRdnVHeXFTYjJ2K0d6K05TdnJldg==
+  // auth header:
+  // headers: {
+  // Authorization: 'Basic c2NvdHQuZnVzdG9uQGdyYW5kcGFkLm5ldDpOelUyTnpZM05UYzRNREV6T2hyM1djY0pRdnVHeXFTYjJ2K0d6K05TdnJldg=='
+  // }
+  try {
+    const res = await axios({
+      method: "get",
+      url: url,
+      auth: {
+        username: "scott.fuston",
+        password: "Release123!",
+      },
+    });
 
-  // simulate a promise
-  const promise = new Promise((resolve, reject) => {
-
-    setTimeout(() => {
-
-      const res = jira_issues.filter((iss) => {
-        return iss.name.toLowerCase() === issueNum;
-      })[0];
-
-      if (res) {
-        resolve(res);
-      } else {
-        reject(`no resource found for ${issueNum}`);
-      }
-
-    }, 1000);
-
-  });
-  return promise;
+    return res;
+  } catch (err) {
+    return { err: err };
+  }
 }
