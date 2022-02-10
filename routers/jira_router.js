@@ -16,18 +16,13 @@ router.get("/:num", (req, res) => {
       const response = issue.data;
 
       if (response) {
-        // get person testing
-        const tester =
-          response.fields.assignee !== null
-            ? response.fields.assignee.displayName
-            : "";
-
         // filter out 'Bugs Found' types
         const issueLinks = response.fields.issuelinks.filter((iss) => {
           return iss.type.name !== "Bugs Found";
         });
 
-        let strArray = ["|||Issue|Tester"];
+        // init header str
+        let resArray = issueLinks.length > 0 ? ["|||Issue|Tester"] : [];
 
         issueLinks.forEach((ele) => {
           let type = ele.inwardIssue
@@ -38,15 +33,15 @@ router.get("/:num", (req, res) => {
           const key = ele[type].key;
           const description = ele[type].fields.summary;
 
-          strArray.push(`||${key}: ${description}|${tester}`);
+          resArray.push(`||${key}: ${description}|`);
         });
 
-        return res.status(200).json(strArray);
+        return res.status(200).json(resArray);
       }
-      res.status(404).json({ Error: `No issues matching ${issueNum}` });
+      return res.status(404).json({ Error: `No issues matching ${issueNum}` });
     })
     .catch((err) => {
-      res.status(500).json({ Error: err });
+      return res.status(500).json({ Error: err });
     });
 });
 
