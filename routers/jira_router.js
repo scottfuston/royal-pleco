@@ -36,7 +36,7 @@ router.get("/:num", (req, res) => {
           resArray.push(`||${key}: ${description}|`);
         });
         res.status(200).send(resArray);
-        res.end();
+        return res.end();
       }
       return res.status(404).send({ Error: `No issues matching ${issueNum}` });
     })
