@@ -36,12 +36,12 @@ router.get("/:num", (req, res) => {
           resArray.push(`||${key}: ${description}|`);
         });
 
-        return res.status(200).json(resArray);
+        return res.status(200).send(resArray);
       }
-      return res.status(404).json({ Error: `No issues matching ${issueNum}` });
+      return res.status(404).send({ Error: `No issues matching ${issueNum}` });
     })
     .catch((err) => {
-      return res.status(500).json({ Error: err });
+      return res.status(500).send({ Error: err });
     });
 });
 
