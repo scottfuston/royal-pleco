@@ -3,7 +3,7 @@
 ## About this project
 
 - This server is deployed on heroku
-  api base url is: 
+  api base url is: https://royal-pleco.herokuapp.com/
 
 ---
 
