@@ -8,7 +8,8 @@ const morgan = require("morgan");
 // global middleware
 server.use(helmet());
 server.use(cors({
-  origin: '*'
+  origin: '*',
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
 }));
 server.use(express.json());
 
