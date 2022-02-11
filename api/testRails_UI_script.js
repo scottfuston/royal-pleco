@@ -28,14 +28,9 @@ $(document).ready(function () {
         return response.json();
       })
       .then((data) => {
-        let temp = "";
-        data.forEach((d) => {
-          temp += d + "\n";
-        });
-        console.log("temp: ", temp);
-        console.log("done");
+        console.log("done: ", data);
         btn.removeEventListener("click", getLinkedIssues);
-        return (descBox.innerHTML = temp);
+        return;
       })
       .catch((err) => {
         console.log("Error: ", err);
@@ -51,7 +46,6 @@ $(document).ready(function () {
   $("#content-header .content-header-inner").prepend(button);
 
   //   other elements used
-  const descBox = document.querySelector(".field-editor");
   const btn = document.querySelector(".button-start");
 
   /* Bind the click event to trigger the script */
