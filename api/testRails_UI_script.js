@@ -2,7 +2,7 @@
 // description: Sends a request to a REST API to start running the automated test for this project
 // author: Gurock Software
 // version: 2.0
-// includes: ^runs/add
+// includes: ^runs/view
 // excludes:
 
 // js:
@@ -16,7 +16,14 @@ $(document).ready(function () {
       return false;
     }
 
-    await fetch(`https://royal-pleco.herokuapp.com/jira/${jira_issue}`)
+    const run_id = document.querySelector(
+      ".content-header-inner div.content-header-id"
+    ).innerHTML;
+    console.log("run_id: ", run_id);
+
+    await fetch(
+      `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`
+    )
       .then((response) => {
         return response.json();
       })
