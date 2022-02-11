@@ -37,6 +37,7 @@ async function setTestRailDescription(descStr, run_id) {
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin" : "*"
       },
       url: url,
       auth: {
@@ -51,7 +52,6 @@ async function setTestRailDescription(descStr, run_id) {
     console.log("setTestRailDescription finished: ");
     return res;
   } catch (err) {
-    console.log("err: ", err);
     return err;
   }
 }

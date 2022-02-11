@@ -46,7 +46,7 @@ router.get("/", (req, res) => {
 
         const trRes = await jira.setTestRailDescription(descStr, run_id);
 
-        // console.log("trRes: ", trRes.data);
+        console.log("trRes: ", trRes);
         return res.status(200).send(trRes);
       }
       return res.status(404).send({ Error: `No issues matching ${issueNum}` });
