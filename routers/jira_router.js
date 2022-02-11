@@ -6,6 +6,7 @@ const { jira_model: jira } = require("../models");
 
 // get a Jira issue by card
 router.get("/:num", (req, res) => {
+  console.log("route hit\n");
   //TODO: check req headers
 
   const issueNum = req.params.num.toString().trim();

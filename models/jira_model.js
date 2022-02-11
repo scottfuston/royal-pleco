@@ -60,8 +60,9 @@ async function getIssue(issueNum) {
       },
     });
 
+    console.log("getIssue finished\n");
     return res;
   } catch (err) {
-    return { err: err };
+    return err;
   }
 }
