@@ -8,25 +8,26 @@
 // js:
 $(document).ready(function () {
   const getLinkedIssues = async () => {
-    const jira_issue = document.querySelector(
-      "form .form-group:nth-child(4) input"
-    ).value;
+    const jira_issue = document.querySelector(".referenceLink").text;
 
     if (jira_issue === null || jira_issue == "") {
       return false;
     }
 
-    const run_id = document.querySelector(
+    let run_id = document.querySelector(
       ".content-header-inner div.content-header-id"
     ).innerHTML;
+
+    run_id = run_id.slice(1).trim();
     console.log("run_id: ", run_id);
+    console.log("jira_issue: ", jira_issue);
 
     await fetch(
       `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`
     )
-      .then((response) => {
-        return response.json();
-      })
+    //   .then((response) => {
+    //     return response.json();
+    //   })
       .then((data) => {
         console.log("done: ", data);
         btn.removeEventListener("click", getLinkedIssues);

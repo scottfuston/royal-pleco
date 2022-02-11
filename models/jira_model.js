@@ -29,7 +29,8 @@ async function getIssue(issueNum) {
 
 // set testRail description
 async function setTestRailDescription(descStr, run_id) {
-  console.log("testRails hit");
+  console.log("descStr: ", descStr, "run_id: ", run_id);
+
   let url = `${process.env.TEST_RAIL_URL}/index.php?/api/v2/update_run/${run_id}`;
   try {
     const res = await axios({
@@ -50,6 +51,7 @@ async function setTestRailDescription(descStr, run_id) {
     console.log("setTestRailDescription finished: ");
     return res;
   } catch (err) {
+    console.log("err: ", err);
     return err;
   }
 }

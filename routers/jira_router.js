@@ -8,7 +8,10 @@ const { jira_model: jira } = require("../models");
 router.get("/", (req, res) => {
   //TODO: check req headers
 
-  const { jira_issue, run_id } = req.query;
+  const jira_issue = req.query.jira_issue.trim();
+  const run_id = req.query.run_id.trim();
+  console.log("jira_issue: ", jira_issue);
+  console.log("run_id: ", run_id);
 
   jira
     .getIssue(jira_issue)
@@ -46,8 +49,7 @@ router.get("/", (req, res) => {
         const trRes = await jira.setTestRailDescription(descStr, run_id);
 
         // console.log("trRes: ", trRes.data);
-        res.status(200).send(trRes.id);
-        return res.end();
+        return res.status(200).send(trRes);
       }
       return res.status(404).send({ Error: `No issues matching ${issueNum}` });
     })
