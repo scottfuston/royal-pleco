@@ -7,7 +7,9 @@ const morgan = require("morgan");
 
 // global middleware
 server.use(helmet());
-server.use(cors());
+server.use(cors({
+  origin: '*'
+}));
 server.use(express.json());
 
 // logs to '/logs/access.log' file

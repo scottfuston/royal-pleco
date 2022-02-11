@@ -25,9 +25,6 @@ $(document).ready(function () {
     await fetch(
       `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`
     )
-    //   .then((response) => {
-    //     return response.json();
-    //   })
       .then((data) => {
         console.log("done: ", data);
         btn.removeEventListener("click", getLinkedIssues);
