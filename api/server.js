@@ -11,7 +11,7 @@ server.use(cors());
 server.use(express.json());
 
 // logs to '/logs/access.log' file
-server.use(morgan('dev'));
+server.use(morgan('common'));
 
 // define routers
 const { jira_router } = require("../routers");
