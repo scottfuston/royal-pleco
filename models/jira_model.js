@@ -25,8 +25,8 @@ function getIssue(issueNum) {
 function setTestRailDescription(descStr, run_id) {
   // console.log("descStr: ", descStr, "run_id: ", run_id);
 
-  let url = `${process.env.TEST_RAIL_URL}`;
-  let endPoint= `/index.php?/api/v2/update_run/${run_id}`
+  let url = `${process.env.TEST_RAIL_URL}/index.php?/api/v2/update_run/${run_id}`;
+
   return axios({
     method: "post",
     headers: {
