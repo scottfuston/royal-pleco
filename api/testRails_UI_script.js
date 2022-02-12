@@ -9,7 +9,6 @@
 $(document).ready(function () {
   const jira_issue = document.querySelector(".referenceLink").text;
   const getLinkedIssues = async () => {
-
     if (jira_issue === null || jira_issue == "") {
       return false;
     }
@@ -35,6 +34,8 @@ $(document).ready(function () {
       .then((data) => {
         console.log("done: ", data);
         btn.removeEventListener("click", getLinkedIssues);
+        window.alert("Linked issues successfully added!");
+        location.reload();
       })
       .catch((err) => {
         console.log("Error: ", err);
