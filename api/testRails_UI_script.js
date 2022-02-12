@@ -30,7 +30,7 @@ $(document).ready(function () {
     )
       .then((data) => {
         if (data.status !== 200) {
-          const error = `Error: please confirm: jira issue: ${jira_issue}, run id: ${run_id}.\n If problems persist contact Scott.`;
+          const error = `Error: please confirm: jira issue: ${jira_issue}.\n\n If problems persist contact Scott.`;
           alert(error);
           return;
         }
@@ -45,7 +45,7 @@ $(document).ready(function () {
   };
 
   /* Create the button */
-  var button = $(
+  const button = $(
     '<div class="toolbar content-header-toolbar"><a class="toolbar-button toolbar-button-last toolbar-button-first content-header-button button-start" href="javascript:void(0)">Get Linked Issues</a></div>'
   );
 

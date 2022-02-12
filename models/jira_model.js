@@ -15,8 +15,8 @@ function getIssue(issueNum) {
     method: "get",
     url: url,
     auth: {
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD,
+      username: process.env.JIRA_USERNAME,
+      password: process.env.JIRA_PASSWORD,
     },
   });
 }
@@ -34,8 +34,8 @@ function setTestRailDescription(descStr, run_id) {
     },
     url: url,
     auth: {
-      username: process.env.EMAIL,
-      password: process.env.PASSWORD,
+      username: process.env.TEST_RAIL_EMAIL,
+      password: process.env.TEST_RAIL_PASSWORD,
     },
     data: {
       description: descStr,
