@@ -23,12 +23,18 @@ $(document).ready(function () {
     console.log("jira_issue: ", jira_issue);
 
     await fetch(
-      `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`
+      `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`,
+      {
+        method: "get",
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     )
       .then((data) => {
         console.log("done: ", data);
         btn.removeEventListener("click", getLinkedIssues);
-        return;
       })
       .catch((err) => {
         console.log("Error: ", err);

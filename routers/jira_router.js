@@ -52,13 +52,17 @@ router.get("/", async (req, res) => {
       jira
         .setTestRailDescription(descStr, run_id)
         .then((descRes) => {
-          console.log("setTestRailDescription Success!: ", descRes.status, "\n\n");
+          console.log(
+            "setTestRailDescription Success!: ",
+            descRes.status,
+            "\n\n"
+          );
           if (descRes.status === 200) {
-            res.status(200).send('Success!');
+            res.status(200).send("Success!");
           }
         })
         .catch((descErr) => {
-          const status= descErr.response.status
+          const status = descErr.response.status;
           console.log("descErr: ", descErr.response);
           res.status(status).json({ error: descErr.response.data.error });
         });
@@ -66,12 +70,11 @@ router.get("/", async (req, res) => {
 
     .catch((issueErr) => {
       const error = issueErr.response.data.errorMessages[0];
-      const status= issueErr.response.status
+      const status = issueErr.response.status;
 
       console.log("issueErr: ", issueErr.response);
       return res.status(status).send(error);
     });
-
 });
 
 module.exports = router;
