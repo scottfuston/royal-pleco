@@ -8,9 +8,9 @@ const { jira_model: jira } = require("../models");
 router.get("/", async (req, res) => {
   //TODO: check req headers
 
-  const jira_issue = req.query.jira_issue;
+  const jira_issue = req.query.issue;
   const run_id = req.query.run_id.trim();
-  // console.log("jira_issue: ", jira_issue);
+  console.log("jira_issue: ", jira_issue);
 
   jira
     .getIssue(jira_issue)
