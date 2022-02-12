@@ -7,8 +7,8 @@
 
 // js:
 $(document).ready(function () {
+  const jira_issue = document.querySelector(".referenceLink").text;
   const getLinkedIssues = async () => {
-    const jira_issue = document.querySelector(".referenceLink").text;
 
     if (jira_issue === null || jira_issue == "") {
       return false;
