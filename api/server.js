@@ -5,12 +5,14 @@ const server = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
 
+const corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
+
 // global middleware
 server.use(helmet());
-server.use(cors({
-  origin: '*',
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE"
-}));
+server.use(cors(corsOptions));
 server.use(express.json());
 
 // logs to '/logs/access.log' file
