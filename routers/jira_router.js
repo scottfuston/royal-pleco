@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
 
   const jira_issue = req.query.issue;
   const run_id = req.query.run_id.trim();
-  console.log("jira_issue: ", jira_issue);
 
   jira
     .getIssue(jira_issue)
