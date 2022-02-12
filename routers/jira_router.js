@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
       // console.log("issRes: ", issRes);
 
       if (!issRes.data.fields) {
-        console.log("issRes: ", issRes.data.errorMessages[0]);
+        console.log("issRes: ", issRes);
         return res
           .status(404)
           .send({ Error: issRes.response.data.errorMessages[0] });

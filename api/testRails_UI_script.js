@@ -13,13 +13,10 @@ $(document).ready(function () {
       return false;
     }
 
-    let run_id = document.querySelector(
-      ".content-header-inner div.content-header-id"
-    ).innerHTML;
-
-    run_id = run_id.slice(1).trim();
-    console.log("run_id: ", run_id);
-    console.log("jira_issue: ", jira_issue);
+    let run_id = document
+      .querySelector(".content-header-inner div.content-header-id")
+      .innerHTML.slice(1)
+      .trim();
 
     await fetch(
       `https://royal-pleco.herokuapp.com/jira?issue=${jira_issue}&run_id=${run_id}`,
@@ -32,7 +29,12 @@ $(document).ready(function () {
       }
     )
       .then((data) => {
-        console.log("done: ", data);
+        if (data.status !== 200) {
+          const error = `Error: please confirm: jira issue: ${jira_issue}, run id: ${run_id}.\n If problems persist contact Scott.`;
+          alert(error);
+          return;
+        }
+
         btn.removeEventListener("click", getLinkedIssues);
         window.alert("Linked issues successfully added!");
         location.reload();
