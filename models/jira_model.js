@@ -9,6 +9,7 @@ module.exports = {
 // get issue
 function getIssue(issueNum) {
   // call jira api and get current issue(card)
+  console.log("issueNum: ", issueNum);
   let url = `${process.env.JIRA_URL}/rest/api/2/issue/${issueNum}`;
 
   return axios({
