@@ -10,10 +10,15 @@ const morgan = require("morgan");
 //   optionsSuccessStatus: 200,
 // };
 
+var whitelist = ["https://grandpad.testrail.io", "localhost"];
 var corsOptions = {
   origin: function (origin, callback) {
     console.log("origin: ", origin);
-    callback(null, true);
+    if (whitelist.indexOf(origin) === -1) {
+      callback(new Error("Not allowed by CORS"));
+    } else {
+      callback(null, true);
+    }
   },
 };
 
