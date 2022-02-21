@@ -10,7 +10,7 @@ const morgan = require("morgan");
 //   optionsSuccessStatus: 200,
 // };
 
-var whitelist = [/grandpad.testrail.io/, /localhost/];
+var whitelist = [/testrail$/, /localhost$/];
 var corsOptions = {
   methods: "POST",
   origin: function (origin, callback) {
@@ -19,6 +19,7 @@ var corsOptions = {
       callback(new Error("Not allowed by CORS"));
     }
   },
+  optionsSuccessStatus: 200,
 };
 
 // global middleware

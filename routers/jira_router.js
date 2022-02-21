@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
     .getIssue(jira_issue)
     .then((issRes) => {
       console.log("req baseUrl: ", req.originalUrl);
+      console.log("req hostname: ", req.hostname);
 
       if (!issRes.data.fields) {
         console.log("issRes: ", issRes);
