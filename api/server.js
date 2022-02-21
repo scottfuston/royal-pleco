@@ -5,9 +5,16 @@ const server = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
 
-const corsOptions = {
-  origin: "*",
-  optionsSuccessStatus: 200,
+// const corsOptions = {
+//   origin: "https://grandpad.testrail.io/",
+//   optionsSuccessStatus: 200,
+// };
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    console.log("origin: ", origin);
+    callback(null, true);
+  },
 };
 
 // global middleware
