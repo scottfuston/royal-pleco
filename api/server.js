@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 const corsOptions = {
-  origin: "https://grandpad.testrail.io/",
+  origin: "*",
   optionsSuccessStatus: 200,
 };
 
