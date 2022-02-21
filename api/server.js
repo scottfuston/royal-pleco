@@ -5,20 +5,8 @@ const server = express();
 const helmet = require("helmet");
 const morgan = require("morgan");
 
-// const corsOptions = {
-//   origin: "https://grandpad.testrail.io/",
-//   optionsSuccessStatus: 200,
-// };
-
-var whitelist = ["https://grandpad.testrail.io"];
-var corsOptions = {
-  methods: "POST",
-  origin: function (origin, callback) {
-    console.log("origin: ", origin);
-    if (whitelist.indexOf(origin) === -1) {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+const corsOptions = {
+  origin: "https://grandpad.testrail.io/",
   optionsSuccessStatus: 200,
 };
 
