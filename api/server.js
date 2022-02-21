@@ -10,7 +10,7 @@ const morgan = require("morgan");
 //   optionsSuccessStatus: 200,
 // };
 
-var whitelist = ["https://grandpad.testrail.io", "localhost"];
+var whitelist = ["https://grandpad.testrail.io"];
 var corsOptions = {
   origin: function (origin, callback) {
     console.log("origin: ", origin);
